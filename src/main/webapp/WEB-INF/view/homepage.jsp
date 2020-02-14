@@ -5,8 +5,9 @@
   Time: 22:43
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--PRZEWIJAK ------------------------------------------------ --%>
+
 <section class="padding-large bg-light">
     <div id="carouselExampleControls" class="carousel slide main-slider" data-ride="carousel">
         <div class="carousel-inner container">
@@ -49,7 +50,6 @@
     </div>
 </section>
 
-<%--CZARNY PROSTOKĄT -------------------------------------------------%>
 <section class="section-more padding-small">
     <div class="container d-flex justify-content-between">
         <div class="mr-4">
@@ -59,13 +59,12 @@
         </div>
         <div class="ml-4 align-self-center">
             <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
-                <a href="home.jsp">Lorem ipsum</a>
+                <a href="/">Lorem ipsum</a>
             </button>
         </div>
     </div>
 </section>
 
-<%--3 RZECZY DO WYBORU ------------------------------------------------------------------%>
 <section class="padding-small details bg-light">
     <div class="container">
         <div class="row">
@@ -91,7 +90,7 @@
     </div>
 </section>
 
-<%--CZARNY PROSTOKĄT 2 ------------------------------------------%>
+
 <section class="newsletter-section padding-small">
     <div class="container">
         <div class="row">
@@ -101,10 +100,10 @@
             <div class="col-5">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control border-0 rounded-0" placeholder=""
-                           aria-label="Recipient's username" aria-describedby="basic-addon2">
+                           aria-label="Recipient's username" aria-describedby="basic-addon3">
                     <div class="input-group-append">
-                        <button class="input-group-text btn-color border-0 rounded-0" type="submit" id="basic-addon2">
-                            <a href="home.jsp">Lorem</a>
+                        <button class="input-group-text btn-color border-0 rounded-0" type="submit" id="basic-addon3">
+                            <a href="/">Lorem</a>
                         </button>
                     </div>
                 </div>
@@ -113,8 +112,6 @@
     </div>
 </section>
 
-
-<%--KWADRAT + TEKST ================================--%>
 <section class="padding-medium story bg-light" id="about">
     <div class="container d-flex justify-content-center align-items-center">
         <div class="row">
@@ -134,4 +131,3 @@
         </div>
     </div>
 </section>
-

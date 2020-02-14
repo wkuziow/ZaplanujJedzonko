@@ -6,10 +6,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 
-@WebServlet(name = "Login", urlPatterns = "/login.html")
+@WebServlet(name = "Login", urlPatterns = "/login")
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+
+
+        request.getParameter("email");
+        request.getParameter("password");
+
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        PrintWriter writer = response.getWriter();
+        response.getWriter().append(email + " " + password);
 
     }
 

@@ -12,7 +12,7 @@
             <div class="container w-25">
                 <!-- fix action, method -->
                 <!-- add name attribute for all inputs -->
-                <form class="padding-small text-center">
+                <form class="padding-small text-center" method="post">
                     <h1 class="text-color-darker">Rejestracja</h1>
                     <div class="form-group">
                         <input type="text" class="form-control" id="name" name="name" placeholder="podaj imię">
@@ -27,7 +27,7 @@
                         <input type="text" class="form-control" id="password" name="password" placeholder="podaj hasło">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="repassword" name="password" placeholder="powtórz hasło">
+                        <input type="text" class="form-control" id="repassword" name="repassword" placeholder="powtórz hasło">
                     </div>
                     <button class="btn btn-color rounded-0" type="submit">Zarejestruj</button>
                 </form>
