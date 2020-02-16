@@ -18,6 +18,7 @@ public class AdminDao {
     private static final String DELETE_ADMIN_QUERY = "DELETE FROM admins where id = ?;";
     private static final String UPDATE_ADMIN_QUERY = "UPDATE admins SET first_name = ? , last_name = ?, email = ?, password = ?, superadmin = ?, enable = ? WHERE	id = ?;";
     private static final String READ_ADMIN_QUERY = "SELECT * FROM admins where id = ?;";
+    private static final String READ_ADMIN_EMAIL = "SELECT * FROM admins where email = ?;";
     private static final String FIND_ALL_ADMINS_QUERY = "SELECT * FROM admins;";
 
 
@@ -58,6 +59,29 @@ public class AdminDao {
         Admin admin = new Admin();
         try (Connection connection = DbUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(READ_ADMIN_QUERY)
+        ) {
+            statement.setInt(1, adminId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    admin.setId(resultSet.getInt("id"));
+                    admin.setFirstName(resultSet.getString("first_name"));
+                    admin.setLastName(resultSet.getString("last_name"));
+                    admin.setEmail(resultSet.getString("email"));
+                    admin.setPassword(resultSet.getString("password"));
+                    admin.setSuperAdmin(resultSet.getInt("superadmin"));
+                    admin.setEnable(resultSet.getBoolean("enable"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return admin;
+    }
+
+    public Admin readEmail(Integer adminId) {
+        Admin admin = new Admin();
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(READ_ADMIN_EMAIL)
         ) {
             statement.setInt(1, adminId);
             try (ResultSet resultSet = statement.executeQuery()) {
