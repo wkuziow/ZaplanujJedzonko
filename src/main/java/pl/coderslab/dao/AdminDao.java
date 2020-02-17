@@ -78,12 +78,12 @@ public class AdminDao {
         return admin;
     }
 
-    public Admin readEmail(Integer adminId) {
+    public Admin readEmail(String email) {
         Admin admin = new Admin();
         try (Connection connection = DbUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(READ_ADMIN_EMAIL)
         ) {
-            statement.setInt(1, adminId);
+            statement.setString(1, email);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     admin.setId(resultSet.getInt("id"));
