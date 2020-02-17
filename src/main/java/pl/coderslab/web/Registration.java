@@ -44,7 +44,6 @@ public class Registration extends HttpServlet {
         if (adminDao.readEmail(email).getEmail() == null) {
             adminDao.create(admin);
         }
-        System.out.println(adminDao.readEmail(email).getEmail());
         response.sendRedirect("/login");
 
 
