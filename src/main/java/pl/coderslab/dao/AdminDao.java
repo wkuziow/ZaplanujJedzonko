@@ -24,8 +24,8 @@ public class AdminDao {
 
     public Admin create(Admin admin) {
         try (Connection connection = DbUtil.getConnection();
-            PreparedStatement insertStm = connection.prepareStatement(CREATE_ADMIN_QUERY,
-            PreparedStatement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement insertStm = connection.prepareStatement(CREATE_ADMIN_QUERY,
+                     PreparedStatement.RETURN_GENERATED_KEYS)) {
             insertStm.setString(1, admin.getFirstName());
             insertStm.setString(2, admin.getLastName());
             insertStm.setString(3, admin.getEmail());
@@ -103,7 +103,7 @@ public class AdminDao {
 
     public void update(Admin admin) {
         try (Connection connection = DbUtil.getConnection();
-            PreparedStatement statement = connection.prepareStatement(UPDATE_ADMIN_QUERY)) {
+             PreparedStatement statement = connection.prepareStatement(UPDATE_ADMIN_QUERY)) {
             statement.setInt(7, admin.getId());
             statement.setString(1, admin.getFirstName());
             statement.setString(2, admin.getLastName());
@@ -121,7 +121,7 @@ public class AdminDao {
 
     public void delete(Integer adminId) {
         try (Connection connection = DbUtil.getConnection();
-            PreparedStatement statement = connection.prepareStatement(DELETE_ADMIN_QUERY)) {
+             PreparedStatement statement = connection.prepareStatement(DELETE_ADMIN_QUERY)) {
             statement.setInt(1, adminId);
             statement.executeUpdate();
 
@@ -161,8 +161,21 @@ public class AdminDao {
         return adminList;
     }
 
-
+    public Admin authentication(String email, String password) {
+        List<Admin> list = new ArrayList<>();
+        AdminDao adminDao = new AdminDao();
+        list = adminDao.findAll();
+        Admin admin = new Admin();
+        boolean loged = false;
+        for (Admin a : list) {
+            if (a.getEmail().equals(email) && a.getPassword().equals(password)) {
+                admin = adminDao.read(a.getId());
+                loged = true;
+            }
+        }
+        if (loged == false) {
+            admin = null;
+        }
+        return admin;
+    }
 }
-
-
-

@@ -25,19 +25,17 @@ public class Login extends HttpServlet {
 
         Admin admin = new Admin();
         AdminDao adao = new AdminDao();
-//        String emailDao = AdminDao.login(admin);
+        String emailDao = admin.getEmail();
+        String passwordDao = admin.getPassword();
 
-//        if (email.equals(USER) && password.equals(PASSWORD)) {
-//            // dodaj dane do sesji pod kluczem: username
-//            // przekieruj na adres /admin
-//            HttpSession session = request.getSession();
-//            session.setAttribute("username", user);
-//            session.setAttribute( "login", user);
-//            response.sendRedirect(request.getContextPath() + "/admin");
-//        } else {
-//            request.setAttribute( "massage", "Wpisane login, lub hasło są niepoprawne, spróbuj ponownie");
-//            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
-//        }
+        if (email.equals(emailDao) && password.equals(passwordDao)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username", email);
+            response.sendRedirect(request.getContextPath() + "/login");
+        } else {
+            request.setAttribute("massage", "Wpisane login, lub hasło są niepoprawne, spróbuj ponownie");
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        }
 
 
         PrintWriter writer = response.getWriter();
