@@ -24,24 +24,34 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
 
         Admin admin = new Admin();
-        AdminDao adao = new AdminDao();
-        String emailDao = admin.getEmail();
-        String passwordDao = admin.getPassword();
+        HttpSession session = request.getSession();
+        AdminDao adminDao = new AdminDao();
+        admin = adminDao.authentication(email, password);
 
-        if (email.equals(emailDao) && password.equals(passwordDao)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", email);
-            response.sendRedirect(request.getContextPath() + "/login");
+        if (admin == null) {
+            response.sendRedirect("/login");
         } else {
-            request.setAttribute("massage", "Wpisane login, lub hasło są niepoprawne, spróbuj ponownie");
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+            session.setAttribute("loged", admin);
+            response.sendRedirect("/app-home");
         }
-
-
-        PrintWriter writer = response.getWriter();
-        response.getWriter().append(email + " " + password);
-
     }
+
+//        AdminDao adao = new AdminDao();
+//        String emailDao = admin.getEmail();
+//        String passwordDao = admin.getPassword();
+//
+//        if (email.equals(emailDao) && password.equals(passwordDao)) {
+//            HttpSession session = request.getSession();
+//            session.setAttribute("username", email);
+//            response.sendRedirect("/login");
+//        } else {
+//            request.setAttribute("massage", "Wpisane login, lub hasło są niepoprawne, spróbuj ponownie");
+//            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+//        }
+//        PrintWriter writer = response.getWriter();
+//        response.getWriter().append(email + " " + password);
+
+//    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);

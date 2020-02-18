@@ -168,7 +168,7 @@ public class AdminDao {
         Admin admin = new Admin();
         boolean loged = false;
         for (Admin a : list) {
-            if (a.getEmail().equals(email) && a.getPassword().equals(password)) {
+            if (a.getEmail().equals(email) && BCrypt.checkpw(password, a.getPassword())) {
                 admin = adminDao.read(a.getId());
                 loged = true;
             }
