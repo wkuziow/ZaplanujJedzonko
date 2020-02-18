@@ -45,11 +45,9 @@ public class Registration extends HttpServlet {
             adminDao.create(admin);
             response.sendRedirect("/login");
         }
-//        else if (adminDao.readEmail(email).getEmail() != null) {
-//            request.setAttribute("user", 1);
-//            getServletContext().getRequestDispatcher("/WEB-INF/view/registration.jsp")
-//                    .forward(request, response);
-//        }
+       else  {
+           response.sendRedirect("/register");
+        }
 
 
 
