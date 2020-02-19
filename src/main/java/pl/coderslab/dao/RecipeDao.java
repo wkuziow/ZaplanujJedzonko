@@ -115,4 +115,29 @@ public class RecipeDao {
       return recipeList;
    }
 
+   public List<Recipe> readAdminId(int id){
+      List<Recipe> recipeList = new ArrayList<>();
+      try (Connection connection = DbUtil.getConnection()){
+         PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_RECIPE_BY_ADMIN_ID_QUERY);
+         preparedStatement.setInt(1,id);
+         ResultSet resultSet = preparedStatement.executeQuery();
+         if (resultSet.next()){
+            Recipe recipe = new Recipe();
+            recipe.setId(resultSet.getInt("id"));
+            recipe.setName(resultSet.getString("name"));
+            recipe.setIngredients(resultSet.getString("ingredients"));
+            recipe.setDescription(resultSet.getString("description"));
+            recipe.setCreated(resultSet.getString("created"));
+            recipe.setUpdated(resultSet.getString("updated"));
+            recipe.setPreparationTime(resultSet.getInt("preparation_time"));
+            recipe.setPreparationTime(resultSet.getInt("admin_id"));
+            recipeList.add(recipe);
+
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
+      return recipeList;
+   }
+
 }

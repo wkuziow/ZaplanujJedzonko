@@ -1,5 +1,8 @@
 package pl.coderslab.web;
 
+import pl.coderslab.model.Admin;
+
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +20,8 @@ public class AuthFilter implements Filter {
 //        HttpServletResponse httpResponse = (HttpServletResponse) resp;
 //        HttpServletRequest httpRequest = (HttpServletRequest) req;
         HttpSession sess = ((HttpServletRequest) req).getSession();
-        String username = (String) sess.getAttribute("username");
-        if (username == null || username.isEmpty()) {
+        Admin admin  = (Admin) sess.getAttribute("loged");
+        if (admin == null) {
             ((HttpServletResponse) resp).sendRedirect("/login");
             return;
         }
