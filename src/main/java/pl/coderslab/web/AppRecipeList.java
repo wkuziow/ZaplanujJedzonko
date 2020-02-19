@@ -2,6 +2,7 @@ package pl.coderslab.web;
 
 import pl.coderslab.dao.AdminDao;
 import pl.coderslab.dao.RecipeDao;
+import pl.coderslab.model.Admin;
 import pl.coderslab.model.Recipe;
 
 import javax.servlet.ServletException;
@@ -17,26 +18,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "AppRecipeList", urlPatterns = "/app/recipe/list/")
+@WebServlet(name = "AppRecipeList", urlPatterns = "/app/recipeList")
 public class AppRecipeList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession sess = request.getSession();
-        String username = (String) sess.getAttribute("username");
-        AdminDao adminDao = new AdminDao();
-        int adminId = adminDao.readEmail(username).getId();
+        System.out.println("1");
 
-        RecipeDao recipeDao = new RecipeDao();
-
-        List<Recipe> recipeList = recipeDao.readAdminId(adminId);
-        for (int i = 0; i < recipeList.size(); i++) {
-            System.out.println(recipeList.get(i).getId() + " " + recipeList.get(i).getName() + " " +
-                    recipeList.get(i).getDescription());
-        }
 
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession sess = request.getSession();
+        Admin admin  = (Admin) sess.getAttribute("loged");
+
+        AdminDao adminDao = new AdminDao();
+        int adminId = adminDao.readEmail(admin.getEmail()).getId();
+
+
+        RecipeDao recipeDao = new RecipeDao();
+
+        //List<Recipe> recipeList = recipeDao.readAdminId(adminId);
+        List<Recipe> recipeList = recipeDao.findAll();
+        System.out.println(recipeList.size());
+
+        for (int i = 0; i < recipeList.size(); i++) {
+            System.out.println(recipeList.get(i).getId() + " " + recipeList.get(i).getName() + " " +
+                    recipeList.get(i).getDescription());
+        }
     }
 }
