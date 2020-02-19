@@ -11,14 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "Registration", urlPatterns = "/registration")
+@WebServlet(name = "Registration", urlPatterns = "/register")
 public class Registration extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-
-
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String email = request.getParameter("email");
@@ -36,16 +31,13 @@ public class Registration extends HttpServlet {
         admin.setEnable(true);
         if (adminDao.readEmail(email).getEmail() == null) {
             adminDao.create(admin);
+            response.sendRedirect("/login");
+        } else {
+            response.sendRedirect("/register");
         }
-        System.out.println(adminDao.readEmail(email).getEmail());
-        response.sendRedirect("/login");
 
 
     }
-//        } else if (adminDao.readEmail(email).getEmail() != null) {
-//                kod wyświetlający, że użytkownik jest już zajęty
-//        } else if (!password.equals(repassword)) {
-//               kod wyświetlający, że hasła się nie zgadzają
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws

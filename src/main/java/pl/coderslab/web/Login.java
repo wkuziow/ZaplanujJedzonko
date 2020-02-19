@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
         admin = adminDao.authentication(email, password);
 
         if (admin == null) {
-            response.sendRedirect("/login");
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request,response);
         } else {
             session.setAttribute("loged", admin);
             response.sendRedirect("/app-home");
