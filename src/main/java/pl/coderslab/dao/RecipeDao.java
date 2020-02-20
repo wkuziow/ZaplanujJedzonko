@@ -121,7 +121,7 @@ public class RecipeDao {
          PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_RECIPE_BY_ADMIN_ID_QUERY);
          preparedStatement.setInt(1,id);
          ResultSet resultSet = preparedStatement.executeQuery();
-         if (resultSet.next()){
+         while (resultSet.next()){
             Recipe recipe = new Recipe();
             recipe.setId(resultSet.getInt("id"));
             recipe.setName(resultSet.getString("name"));
