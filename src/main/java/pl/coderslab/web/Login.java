@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
             getServletContext().getRequestDispatcher("/login.jsp").forward(request,response);
         } else {
             session.setAttribute("loged", admin);
-            response.sendRedirect("/app-home");
+            response.sendRedirect("/app/home");
         }
     }
 

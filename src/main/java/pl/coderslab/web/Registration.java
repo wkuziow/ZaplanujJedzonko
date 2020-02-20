@@ -36,7 +36,6 @@ public class Registration extends HttpServlet {
             response.sendRedirect("/register");
         }
 
-
     }
 
 

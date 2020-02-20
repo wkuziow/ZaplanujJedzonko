@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Dashboard", urlPatterns = "/dashboard")
+@WebServlet(name = "Dashboard", urlPatterns = "/app/dashboard")
 public class Dashboard extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
