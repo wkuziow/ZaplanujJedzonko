@@ -28,12 +28,12 @@
             </tr>
             <tr class="d-flex">
                 <th scope="row" class="col-2">Opis przepisu</th>
-                <td class="col-7"><textarea class="w-100 p-1" rows="5"></textarea></td>
+                <td class="col-7"><textarea name="description" class="w-100 p-1" rows="5"></textarea></td>
             </tr>
             <tr class="d-flex">
                 <th scope="row" class="col-2">Przygotowanie (minuty)</th>
                 <td class="col-3">
-                    <input class="p-1" type="number" value="">
+                    <input class="p-1" type="number" value="" name="preparationTime">
                 </td>
             </tr>
             </tbody>
@@ -47,12 +47,12 @@
         </div>
         <div class="row d-flex">
             <div class="col-5 p-4">
-                <textarea class="w-100 p-1" rows="10"></textarea>
+                <textarea class="w-100 p-1" rows="10" name="preparation"></textarea>
             </div>
             <div class="col-2"></div>
 
             <div class="col-5 p-4">
-                <textarea class="w-100 p-1" rows="10"></textarea>
+                <textarea class="w-100 p-1" rows="10" name="ingredients"></textarea>
             </div>
         </div>
     </div>

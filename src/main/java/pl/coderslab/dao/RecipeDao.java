@@ -10,7 +10,7 @@ import java.util.List;
 public class RecipeDao {
 
    private static final String CREATE_RECIPE_QUERY =
-           "INSERT INTO recipe (name , ingredients, description, created, updated, preparation_time, admin_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+           "INSERT INTO recipe (name , ingredients, description, created, updated, preparation_time, preparation, admin_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
    private static final String READ_RECIPE_QUERY =
            "SELECT * FROM recipe WHERE id = ?";
    private static final String UPDATE_USER_QUERY =
@@ -22,26 +22,41 @@ public class RecipeDao {
    private static final String FIND_ALL_RECIPE_BY_ADMIN_ID_QUERY =
            "SELECT * FROM recipe WHERE admin_id = ?"; //to się chyba nam przyda później
 
-   public Recipe create(Recipe recipe) throws SQLException {
+   public Recipe create(Recipe recipe) {
       try (Connection connection = DbUtil.getConnection()) {
          PreparedStatement preparedStatement = connection.prepareStatement(CREATE_RECIPE_QUERY, Statement.RETURN_GENERATED_KEYS);
-         preparedStatement.setString(1,recipe.getName());
-         preparedStatement.setString(2,recipe.getIngredients());
-         preparedStatement.setString(3,recipe.getDescription());
-         preparedStatement.setString(4,recipe.getCreated());
-         preparedStatement.setString(5,recipe.getUpdated());
-         preparedStatement.setInt(6,recipe.getPreparationTime());
-         preparedStatement.setInt(7,recipe.getAdminId());
-         ResultSet resultSet = preparedStatement.getGeneratedKeys();
-         if(resultSet.next()){
-            recipe.setId(resultSet.getInt(1));
+         preparedStatement.setString(1, recipe.getName());
+         preparedStatement.setString(2, recipe.getIngredients());
+         preparedStatement.setString(3, recipe.getDescription());
+         preparedStatement.setString(4, recipe.getCreated());
+         preparedStatement.setString(5, recipe.getUpdated());
+         preparedStatement.setInt(6, recipe.getPreparationTime());
+         preparedStatement.setString(7, recipe.getPreparation());
+         preparedStatement.setInt(8, recipe.getAdminId());
+
+         int result = preparedStatement.executeUpdate();
+
+         if (result != 1) {
+            throw new RuntimeException("Execute update returned " + result);
          }
-         return recipe;
-      }catch (SQLException e) {
+         try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+            if (generatedKeys.first()) {
+               recipe.setId(generatedKeys.getInt(1));
+               return recipe;
+            } else {
+               throw new RuntimeException("Generated key was not found");
+            }
+
+         }
+      } catch (Exception e) {
          e.printStackTrace();
-         return null;
       }
-   }
+      return null;
+
+
+      }
+
+
    public Recipe read(int id){
       try (Connection connection = DbUtil.getConnection()){
          PreparedStatement preparedStatement = connection.prepareStatement(READ_RECIPE_QUERY);

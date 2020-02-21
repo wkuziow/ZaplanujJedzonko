@@ -9,11 +9,19 @@ public class Recipe {
     private String created;
     private String updated;
     private int preparationTime;
+    private String preparation;
     private int adminId;
 
 
+    public String getPreparation() {
+        return preparation;
+    }
 
-    public Recipe(int id, String name, String ingredients, String description, String created, String updated, int preparationTime, int adminId) {
+    public void setPreparation(String preparation) {
+        this.preparation = preparation;
+    }
+
+    public Recipe(int id, String name, String ingredients, String description, String created, String updated, int preparationTime, String preparation, int adminId) {
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
@@ -21,6 +29,7 @@ public class Recipe {
         this.created = created;
         this.updated = updated;
         this.preparationTime = preparationTime;
+        this.preparation = preparation;
         this.adminId = adminId;
     }
 
