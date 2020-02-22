@@ -21,6 +21,8 @@ public class RecipeDao {
            "SELECT * FROM recipe";
    private static final String FIND_ALL_RECIPE_BY_ADMIN_ID_QUERY =
            "SELECT * FROM recipe WHERE admin_id = ?"; //to się chyba nam przyda później
+   private static final String COUNT_RECIPIES_QUERY =
+           "SELECT COUNT(*) count FROM recipe WHERE admin_id = ?";
 
    public Recipe create(Recipe recipe) {
       try (Connection connection = DbUtil.getConnection()) {
@@ -153,6 +155,22 @@ public class RecipeDao {
          e.printStackTrace();
       }
       return recipeList;
+   }
+
+   public int recipeCount (int id) {
+      int recipeCount = 0;
+      try (Connection connection = DbUtil.getConnection()){
+         PreparedStatement preparedStatement = connection.prepareStatement(COUNT_RECIPIES_QUERY);
+         preparedStatement.setInt(1,id);
+         ResultSet resultSet = preparedStatement.executeQuery();
+         recipeCount = resultSet.getInt("count");
+      }
+    catch (SQLException e) {
+      e.printStackTrace();
+   }
+
+
+      return recipeCount;
    }
 
 }
