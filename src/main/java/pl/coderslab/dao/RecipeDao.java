@@ -157,11 +157,11 @@ public class RecipeDao {
       return recipeList;
    }
 
-   public int recipeCount (int id) {
+   public int recipeCount (int Id) {
       int counter = 0;
       try (Connection connection = DbUtil.getConnection()) {
          PreparedStatement preparedStatement = connection.prepareStatement(COUNT_RECIPIES_QUERY);
-         preparedStatement.setInt(1, id);
+         preparedStatement.setInt(1, Id);
          ResultSet resultSet = preparedStatement.executeQuery();
          if (resultSet.next()) {
             counter = resultSet.getInt("count");
