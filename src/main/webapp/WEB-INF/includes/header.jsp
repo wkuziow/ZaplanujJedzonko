@@ -7,7 +7,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
 
 <header class="page-header">
     <nav class="navbar navbar-expand-lg justify-content-around">

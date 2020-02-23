@@ -7,7 +7,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
 
 
 <footer class="footer-section pt-3 pb-3">

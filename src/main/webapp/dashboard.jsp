@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-    <style><%@include file="/css/style.css"%></style>
+    <link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Zaplanuj Jedzonko</title>
@@ -35,7 +35,7 @@
                         </a>
                     </div>
                     <div class="menu-item border-dashed">
-                        <a href="app/plan/add">
+                        <a href="/app/plan/add">
                             <i class="far fa-plus-square icon-plus-square"></i>
                             <span class="title">dodaj plan</span>
                         </a>
@@ -51,7 +51,7 @@
                 <div class="dashboard-alerts">
                     <div class="alert-item alert-info">
                         <i class="fas icon-circle fa-info-circle"></i>
-                        <span class="font-weight-bold">Liczba przepisów: ${recipeCount}</span>
+                        <span class="font-weight-bold">Liczba przepisów: "${recipeCount}"</span>
                     </div>
                     <div class="alert-item alert-light">
                         <i class="far icon-calendar fa-calendar-alt"></i>
