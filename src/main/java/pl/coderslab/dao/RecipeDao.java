@@ -163,7 +163,7 @@ public class RecipeDao {
          PreparedStatement preparedStatement = connection.prepareStatement(COUNT_RECIPIES_QUERY);
          preparedStatement.setInt(1,id);
          ResultSet resultSet = preparedStatement.executeQuery();
-         recipeCount = resultSet.getInt("recipeCount");
+         recipeCount = resultSet.getInt("count");
       }
     catch (SQLException e) {
       e.printStackTrace();
