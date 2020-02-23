@@ -23,7 +23,10 @@
 
 <%@include file="WEB-INF/includes/header.jsp"%>
 
+<%@include file="WEB-INF/view/sidePanel.jsp"%>
+
 <%@include file="WEB-INF/view/appRecipeList.jsp"%>
+
 
 
 
