@@ -158,19 +158,22 @@ public class RecipeDao {
    }
 
    public int recipeCount (int id) {
-      int recipeCount = 0;
-      try (Connection connection = DbUtil.getConnection()){
+      int counter = 0;
+      try (Connection connection = DbUtil.getConnection()) {
          PreparedStatement preparedStatement = connection.prepareStatement(COUNT_RECIPIES_QUERY);
-         preparedStatement.setInt(1,id);
+         preparedStatement.setInt(1, id);
          ResultSet resultSet = preparedStatement.executeQuery();
-         recipeCount = resultSet.getInt("count");
+         if (resultSet.next()) {
+            counter = resultSet.getInt("count");
+            return counter;
+         }
       }
     catch (SQLException e) {
       e.printStackTrace();
    }
 
 
-      return recipeCount;
+      return counter;
    }
 
 }

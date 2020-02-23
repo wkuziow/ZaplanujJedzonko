@@ -159,7 +159,11 @@ public Plan read(Integer planId) {
             PreparedStatement preparedStatement = connection.prepareStatement(COUNT_PLAN_QUERY);
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            planCount = resultSet.getInt("planCount");
+            if (resultSet.next()) {
+                planCount = resultSet.getInt("planCount");
+                return planCount;
+            }
+
         }
         catch (SQLException e) {
             e.printStackTrace();
