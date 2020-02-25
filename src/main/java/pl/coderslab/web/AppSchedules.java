@@ -1,6 +1,10 @@
 package pl.coderslab.web;
 
+import pl.coderslab.dao.AdminDao;
+import pl.coderslab.dao.PlanDao;
 import pl.coderslab.dao.RecipeDao;
+import pl.coderslab.model.Admin;
+import pl.coderslab.model.Plan;
 import pl.coderslab.model.Recipe;
 
 import javax.servlet.ServletException;
@@ -12,20 +16,22 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Recipes", urlPatterns = "/recipes")
-public class Recipes extends HttpServlet {
+@WebServlet(name = "AppSchedules", urlPatterns = "/app/schedules")
+public class AppSchedules extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession sess = request.getSession();
-        RecipeDao recipeDao = new RecipeDao();
-        List<Recipe> recipeAllList = recipeDao.findAll();
+        Admin admin  = (Admin) sess.getAttribute("loged");
+        AdminDao adminDao = new AdminDao();
+        int adminId = adminDao.readEmail(admin.getEmail()).getId();
+        PlanDao planDao = new PlanDao();
 
-        request.setAttribute("recipeAllList", recipeAllList);
-        getServletContext().getRequestDispatcher("/recipes.jsp").forward(request, response);
+        List<Plan> planList = planDao.readAdminId(adminId);
+        request.setAttribute("planList", planList);
 
+        getServletContext().getRequestDispatcher("/app-schedule.jsp").forward(request, response);
     }
 }

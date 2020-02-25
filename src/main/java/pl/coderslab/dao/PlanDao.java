@@ -3,6 +3,7 @@ package pl.coderslab.dao;
 import pl.coderslab.exception.NotFoundException;
 import pl.coderslab.model.Book;
 import pl.coderslab.model.Plan;
+import pl.coderslab.model.Recipe;
 import pl.coderslab.utils.DbUtil;
 
 import java.sql.Connection;
@@ -21,6 +22,7 @@ public class PlanDao {
     private static final String READ_PLAN_QUERY = "SELECT * from plan where id = ?;";
     private static final String UPDATE_PLAN_QUERY = "UPDATE	plan SET name = ? , description = ?, created = ?, admin_id = ? WHERE	id = ?;";
     private static final String COUNT_PLAN_QUERY = "SELECT COUNT(*) count FROM plan WHERE admin_id = ?";
+    private static final String FIND_ALL_PLAN_BY_ADMIN_ID_QUERY = "SELECT * FROM plan WHERE admin_id = ?";
 /**
  * Get plan by id
  *
@@ -160,7 +162,7 @@ public Plan read(Integer planId) {
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                planCount = resultSet.getInt("planCount");
+                planCount = resultSet.getInt("count");
                 return planCount;
             }
 
@@ -172,6 +174,29 @@ public Plan read(Integer planId) {
 
         return planCount;
     }
+
+    public List<Plan> readAdminId(int id){
+        List<Plan> planList = new ArrayList<>();
+        try (Connection connection = DbUtil.getConnection()){
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_PLAN_BY_ADMIN_ID_QUERY);
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                Plan plan = new Plan();
+                plan.setId(resultSet.getInt("id"));
+                plan.setName(resultSet.getString("name"));
+                plan.setDescription(resultSet.getString("description"));
+                plan.setCreated(resultSet.getString("created"));
+                plan.setAdminId(resultSet.getString("admin_id"));
+                planList.add(plan);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return planList;
+    }
+
 
 }
 
