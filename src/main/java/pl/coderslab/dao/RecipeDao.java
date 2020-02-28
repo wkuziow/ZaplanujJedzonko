@@ -73,7 +73,8 @@ public class RecipeDao {
             recipe.setCreated(resultSet.getString("created"));
             recipe.setUpdated(resultSet.getString("updated"));
             recipe.setPreparationTime(resultSet.getInt("preparation_time"));
-            recipe.setPreparationTime(resultSet.getInt("admin_id"));
+            recipe.setPreparation(resultSet.getString("preparation"));
+            recipe.setAdminId(resultSet.getInt("admin_id"));
             return recipe;
          }
       } catch (SQLException e) {
