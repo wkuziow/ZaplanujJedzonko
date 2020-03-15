@@ -35,7 +35,7 @@
                         <h3 class="color-header text-uppercase">LISTA PLANÓW</h3>
                     </div>
                     <div class="col d-flex justify-content-end mb-2 noPadding">
-                        <a href="app-add-schedules.html" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Dodaj plan</a>
+                        <a href="/app/plan/add" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Dodaj plan</a>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                             <td class="col-1"><c:out value="${planList.id}" /></td>
                             <td class="col-2">${planList.name}</td>
                             <td class="col-7">
-                                    ${recipeList.description}
+                                    ${planList.description}
                             </td>
                             <td class="col-2 d-flex align-items-center justify-content-center flex-wrap"><a href="#" class="btn btn-danger rounded-0 text-light m-1">Usuń</a>
                                 <a href="/app-details-schedules.html" class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>

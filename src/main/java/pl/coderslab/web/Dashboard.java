@@ -3,6 +3,7 @@ package pl.coderslab.web;
 import pl.coderslab.dao.PlanDao;
 import pl.coderslab.dao.RecipeDao;
 import pl.coderslab.model.Admin;
+import pl.coderslab.model.Plan;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "Dashboard", urlPatterns = "/app/home")
 public class Dashboard extends HttpServlet {
@@ -26,6 +28,19 @@ public class Dashboard extends HttpServlet {
         PlanDao planDao = new PlanDao();
         request.setAttribute("recipeCount", recipeDao.recipeCount(admin.getId()));
         request.setAttribute("planCount", planDao.planCount(admin.getId()));
+        if (planDao.getNewestPlanByAdminId(admin.getId()).isEmpty()){
+            System.out.println("błąd");
+        } else {
+            request.setAttribute("display", "okToDisplay");
+            request.setAttribute("newestPlan", planDao.getNewestPlanByAdminId(admin.getId()));
+            request.setAttribute("newestPlanName", planDao.getNewestPlanByAdminId(admin.getId()).get(0).getPlanName());
+        }
+//        for (int i = 0; i < planDao.getNewestPlanByAdminId(admin.getId()).size(); i++) {
+//            System.out.println(planDao.getNewestPlanByAdminId(admin.getId()).get(i));
+//        }
+
+
+
         getServletContext().getRequestDispatcher("/dashboard.jsp").forward(request, response);
 
     }
