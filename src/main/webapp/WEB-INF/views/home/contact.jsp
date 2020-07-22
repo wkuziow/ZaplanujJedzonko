@@ -1,9 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: piotr
+  Date: 14.02.2020
+  Time: 23:55
+  To change this template use File | Settings | File Templates.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Zaplanuj Jedzonko</title>
@@ -11,22 +20,16 @@
           crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Charmonman:400,700|Open+Sans:400,600,700&amp;subset=latin-ext"
           rel="stylesheet">
-    <link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
 <body>
 
-<%@ include file="/WEB-INF/includes/header.jsp" %>
+<%@include file="../../includes/header.jsp"%>
 
-<%@include file="WEB-INF/view/homepage.jsp"%>
+<%@include file="/WEB-INF/includes/contact.jsp"%>
 
-<%@include file="WEB-INF/view/about.jsp"%>
-
-<%@include file="WEB-INF/view/contact.jsp"%>
-
-<%@ include file="/WEB-INF/includes/footer.jsp" %>
-
+<%@include file="../../includes/footer.jsp"%>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

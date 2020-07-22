@@ -9,6 +9,7 @@
 
 
 <section class="last-info-section padding-small" id="contact">
+    <div align="center"> <a href="mailto:wojciech.kuziow@gmail.com">Wojciech Kuziów</a> </div> <br><br><br>
     <div class="container">
         <div class="row">
             <div class="col">

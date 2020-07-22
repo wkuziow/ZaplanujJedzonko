@@ -12,7 +12,7 @@
 
 <footer class="footer-section pt-3 pb-3">
     <div class="container text-center">
-        <h5 class="text-light">Copyright <a href="www.zaplanujjedzonko.pl"><span class="footer-text-color">ZaplanujJedzonko.pl</span></a></h5>
+        <h5 class="text-light">Copyright 2020 <a href=mailto:wojciech.kuziow@gmail.com><span class="footer-text-color">Wojciech Kuziów</span></a></h5>
     </div>
 </footer>
 
