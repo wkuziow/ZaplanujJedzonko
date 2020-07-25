@@ -21,4 +21,5 @@ public class HomeController {
     public String contactGet () {
         return "home/contact";
     }
+
 }
