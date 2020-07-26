@@ -24,14 +24,13 @@ public class User {
     private String email;
 
     @NotNull(message = "To pole nie może być puste")
-    @Size(min = 3, max = 50, message = "Minimalna wielkość pola to 3, maksymalna 50 znaków")
+    @Size(min = 3, max = 100, message = "Minimalna wielkość pola to 3 znaki")
     private String password;
 
     @Transient
     private String confirmPassword;
 
-
-    private boolean superAdmin;
+    private Role role;
 
     private boolean enable;
 
@@ -86,12 +85,12 @@ public class User {
         this.password = password;
     }
 
-    public boolean isSuperAdmin() {
-        return superAdmin;
+    public Role getRole() {
+        return role;
     }
 
-    public void setSuperAdmin(boolean superAdmin) {
-        this.superAdmin = superAdmin;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public boolean isEnable() {
@@ -100,6 +99,10 @@ public class User {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
+    }
+
+    public String getFullname() {
+        return firstName + " " + lastName;
     }
 }
 

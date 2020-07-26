@@ -20,10 +20,10 @@
 <body>
 
 
-<%@include file="WEB-INF/includes/header.jsp"%>
+<%@include file="../../includes/header.jsp"%>
 
 <section class="dashboard-section">
-        <%@include file="WEB-INF/view/sidePanel.jsp"%>
+        <%@include file="sidePanel.jsp"%>
 
         <div class="m-4 p-4 width-medium">
             <div class="dashboard-header m-4">

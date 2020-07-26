@@ -25,19 +25,13 @@ public class Plan {
     @Size(max = 200, message = "Maksymalna wielkość pola to 200 znaków")
     private String description;
 
-
     private LocalDate created;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    private DayName dayName;
-
-    @Size(max = 50, message = "Maksymalna wielkość pola to 50 znaków")
-    private String mealName;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Recipe> recipeName;
+    @OneToMany
+    private List<PlanDetails> planDetails;
 
     public Plan() {
     }
@@ -82,27 +76,11 @@ public class Plan {
         this.user = user;
     }
 
-    public DayName getDayName() {
-        return dayName;
+    public List<PlanDetails> getPlanDetails() {
+        return planDetails;
     }
 
-    public void setDayName(DayName dayName) {
-        this.dayName = dayName;
-    }
-
-    public String getMealName() {
-        return mealName;
-    }
-
-    public void setMealName(String mealName) {
-        this.mealName = mealName;
-    }
-
-    public List<Recipe> getRecipeName() {
-        return recipeName;
-    }
-
-    public void setRecipeName(List<Recipe> recipeName) {
-        this.recipeName = recipeName;
+    public void setPlanDetails(List<PlanDetails> planDetails) {
+        this.planDetails = planDetails;
     }
 }
