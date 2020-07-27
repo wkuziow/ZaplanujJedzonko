@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <section>
     <div class="row padding-small">
         <i class="fas fa-users icon-users"></i>
@@ -17,7 +17,7 @@
 </section>
 
 <section class="mr-4 ml-4">
-<c:forEach items="${recipeAllList}" var="recipeAllList">
+
     <table class="table">
         <thead>
         <tr class="d-flex text-color-darker">
@@ -28,20 +28,23 @@
         </tr>
         </thead>
         <tbody class="text-color-lighter">
-        <tr class="d-flex">
-            <th scope="row" class="col-1"><c:out value="${recipeAllList.id}" /></th>
-            <td class="col-5">
-                    ${recipeAllList.name}
-            </td>
-            <td class="col-5">${recipeAllList.description}</td>
-            <td class="col-1"><a href="#" class="btn btn-info rounded-0 text-light">Szczegóły</a></td>
-        </tr>
+        <c:forEach items="${recipeList}" var="recipeAllList">
 
+            <tr class="d-flex">
+                <th scope="row" class="col-1"><c:out value="${recipeAllList.id}"/></th>
+                <td class="col-5">
+                        ${recipeAllList.name}
+                </td>
+                <td class="col-5">${recipeAllList.description}</td>
+                <td class="col-1">
+                    <input type="hidden" name="recipeDetailId" value="${recipeAllList.id}"><button type="submit">
+                    <a href="/recipes/details" class="btn btn-info rounded-0 text-light">Szczegóły</a></button></td>
+            </tr>
+        </c:forEach>
 
 
         </tbody>
     </table>
-</c:forEach>
 </section>
 
 

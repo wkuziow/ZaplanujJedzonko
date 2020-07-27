@@ -22,7 +22,7 @@
             <div class="mt-4 ml-4 mr-4">
                 <div class="row border-bottom border-3">
                     <div class="col"><h3 class="color-header text-uppercase">Szczegóły przepisu</h3></div>
-                    <div class="col d-flex justify-content-end mb-2"><a href="/app/recipe/list" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">Powrót</a></div>
+                    <div class="col d-flex justify-content-end mb-2"><a href="/recipes" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">Powrót</a></div>
                 </div>
 
                 <table class="table borderless">
@@ -30,17 +30,17 @@
                     <tr class="d-flex">
                         <th scope="row" class="col-2">Nazwa Przepisu</th>
                         <td class="col-7">
-                            ${recipeDet.name}
+                            ${recipeDetails.name}
                         </td>
                     </tr>
                     <tr class="d-flex">
                         <th scope="row" class="col-2">Opis przepisu</th>
-                        <td class="col-7">${recipeDet.description}</td>
+                        <td class="col-7">${recipeDetails.description}</td>
                     </tr>
                     <tr class="d-flex">
                         <th scope="row" class="col-2">Przygotowanie (minuty)</th>
                         <td class="col-7">
-                            ${recipeDet.preparationTime}
+                            ${recipeDetails.preparationTime}
                         </td>
                     </tr>
                     </tbody>
@@ -53,11 +53,11 @@
                 </div>
                 <div class="row d-flex">
                     <div class="col-5 p-4">
-                        <p>${recipeDet.preparation}</p>
+                        <p>${recipeDetails.preparation}</p>
                     </div>
                     <div class="col-2"></div>
                     <ul class="col-5 p-4 list-unstyled">
-                        <li>${recipeDet.ingredients}</li>
+                        <li>${recipeDetails.ingredients}</li>
 
                     </ul>
                 </div>

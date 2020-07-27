@@ -20,11 +20,11 @@
 <body>
 
 
-<%@include file="WEB-INF/includes/header.jsp"%>
+<%@include file="../../includes/header.jsp"%>
 
-<%@include file="WEB-INF/view/appRecipeDetails.jsp"%>
+<%@include file="/WEB-INF/includes/RecipeDetails.jsp"%>
 
-<%@include file="WEB-INF/includes/footer.jsp"%>
+<%@include file="../../includes/footer.jsp"%>
 
 
 

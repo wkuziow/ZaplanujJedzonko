@@ -14,7 +14,7 @@
 //    }
 //
 //    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        getServletContext().getRequestDispatcher("/appRecipeDetails.jsp").forward(request, response);
+//        getServletContext().getRequestDispatcher("/details.jsp").forward(request, response);
 //
 //    }
 //}

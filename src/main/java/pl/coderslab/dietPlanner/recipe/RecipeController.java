@@ -7,8 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.dietPlanner.user.CurrentUser;
 import pl.coderslab.dietPlanner.utils.Utils;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class RecipeController {
@@ -23,8 +26,24 @@ public class RecipeController {
         model.addAttribute("recipeList", recipeRepository.findAll());
         return "home/recipes";
     }
+
+    @RequestMapping(value = "/recipes", method = RequestMethod.POST)
+    public String recipeListPOst (@RequestParam int recipeDetailId, HttpSession session) {
+        session.setAttribute("recipeDetailId", recipeDetailId);
+        return "recipe/details";
+    }
+
+
     @ModelAttribute("currentUserFullName")
     public String currentUser(@AuthenticationPrincipal CurrentUser customUser) {
         return utils.currentUser(customUser);
     }
+
+    @RequestMapping(value = "/recipes/details", method = RequestMethod.GET)
+    public String recipeDetailsGet(HttpSession session, Model model) {
+
+        model.addAttribute("recipeDetails", recipeRepository.findById((Long) session.getAttribute("recipeDetailId")));
+        return "recipe/details";
+    }
+
 }

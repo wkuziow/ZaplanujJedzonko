@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <c:if test="${param.display == 'okToDisplay'}">
+            <c:if test="${display == 'okToDisplay'}">
             <div class="m-4 p-4 border-dashed">
                 <h2 class="dashboard-content-title">
                     <span>Ostatnio dodany plan:</span> ${newestPlanName}
@@ -68,7 +68,7 @@
                 <table class="table">
                     <thead>
                     <tr class="d-flex">
-                        <th class="col-2">${newestPlan1.dayName}</th>
+                        <th class="col-2">${newestPlan1.name}</th>
                         <th class="col-8"></th>
                         <th class="col-2"></th>
                     </tr>
@@ -76,8 +76,8 @@
                     <tbody>
 
                     <tr class="d-flex">
-                        <td class="col-2">${newestPlan1.mealName}</td>
-                        <td class="col-8">${newestPlan1.recipeName}</td>
+                        <td class="col-2">${newestPlan1.description}</td>
+                        <td class="col-8">${newestPlan1.created}</td>
                         <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
                     </tr>
 

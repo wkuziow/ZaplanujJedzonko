@@ -20,7 +20,7 @@
 //    //    RecipeDao recipeDao = new RecipeDao();
 //    //    Recipe recipe = recipeDao.read(recipeId);
 //      //  request.setAttribute("recipeDet", recipe);
-//        getServletContext().getRequestDispatcher("/appRecipeDetails.jsp").forward(request, response);
+//        getServletContext().getRequestDispatcher("/details.jsp").forward(request, response);
 //
 //
 //    }

@@ -1,9 +1,7 @@
 package pl.coderslab.dietPlanner.plan;
 
 
-import pl.coderslab.dietPlanner.recipe.Recipe;
 import pl.coderslab.dietPlanner.user.User;
-import pl.coderslab.dietPlanner.utils.DayName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -31,7 +29,7 @@ public class Plan {
     private User user;
 
     @OneToMany
-    private List<PlanDetails> planDetails;
+    private List<PlanItem> planItem;
 
     public Plan() {
     }
@@ -76,11 +74,11 @@ public class Plan {
         this.user = user;
     }
 
-    public List<PlanDetails> getPlanDetails() {
-        return planDetails;
+    public List<PlanItem> getPlanDetails() {
+        return planItem;
     }
 
-    public void setPlanDetails(List<PlanDetails> planDetails) {
-        this.planDetails = planDetails;
+    public void setPlanDetails(List<PlanItem> planDetails) {
+        this.planItem = planDetails;
     }
 }

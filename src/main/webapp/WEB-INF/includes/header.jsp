@@ -39,12 +39,12 @@
                 <li class="nav-item ml-4">
                     <a class="nav-link color-header" href="/register">rejestracja</a>
                 </li>
-                <li class="nav-item ml-4">
-                    <a class="nav-link disabled" href="/recipes">Przepisy</a>
-                </li>
+
             </security:authorize>
 
-
+            <li class="nav-item ml-4">
+                <a class="nav-link disabled" href="/recipes">Przepisy</a>
+            </li>
             <li class="nav-item ml-4">
                 <a class="nav-link" href="/about">o aplikacji</a>
             </li>
