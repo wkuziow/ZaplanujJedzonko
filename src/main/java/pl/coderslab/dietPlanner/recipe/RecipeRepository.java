@@ -8,5 +8,5 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     int countAllByUserId(long userId);
 
-    Recipe findById(long recipeId);
+    Recipe findRecipeById(long recipeId);
 }

@@ -1,5 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form"
+           uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -78,7 +82,11 @@
                     <tr class="d-flex">
                         <td class="col-2">${newestPlan1.description}</td>
                         <td class="col-8">${newestPlan1.created}</td>
-                        <td class="col-2"><button type="button" class="btn btn-primary rounded-0">Szczegóły</button></td>
+                        <td class="col-2">
+                            <form:form method="post">
+                            <input type="hidden" name="newestPlanId" value="${newestPlan1.id}">
+                            <button type="submit" class="btn btn-primary rounded-0">Szczegóły</button></td>
+                        </form:form>
                     </tr>
 
 

@@ -1,5 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form"
+           uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -21,7 +25,50 @@
 
 <%@include file="../../includes/header.jsp"%>
 
-<%@include file="/WEB-INF/includes/recipes.jsp"%>
+<section>
+    <div class="row padding-small">
+        <i class="fas fa-users icon-users"></i>
+        <h1>Przepisy naszych użytkowników:</h1>
+        <hr>
+        <div class="orange-line w-100"></div>
+    </div>
+</section>
+
+<section class="mr-4 ml-4">
+
+    <table class="table">
+        <thead>
+        <tr class="d-flex text-color-darker">
+            <th scope="col" class="col-1">ID</th>
+            <th scope="col" class="col-5">NAZWA</th>
+            <th scope="col" class="col-5">OPIS</th>
+            <th scope="col" class="col-1">AKCJE</th>
+        </tr>
+        </thead>
+        <tbody class="text-color-lighter">
+        <c:forEach items="${recipeList}" var="recipeAllList">
+
+            <tr class="d-flex">
+                <th scope="row" class="col-1"><c:out value="${recipeAllList.id}"/></th>
+                <td class="col-5">
+                        ${recipeAllList.name}
+                </td>
+                <td class="col-5">${recipeAllList.description}</td>
+                <td class="col-1">
+                    <form:form method="post">
+                        <input type="hidden" name="recipeDetailId" value="${recipeAllList.id}">
+                        <button type="submit">
+                            Szczegóły</button>
+                    </form:form>
+                </td>
+
+            </tr>
+        </c:forEach>
+
+
+        </tbody>
+    </table>
+</section>
 
 <%@include file="../../includes/footer.jsp"%>
 

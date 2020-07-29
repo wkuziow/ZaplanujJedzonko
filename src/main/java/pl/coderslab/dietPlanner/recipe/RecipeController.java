@@ -28,9 +28,9 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/recipes", method = RequestMethod.POST)
-    public String recipeListPOst (@RequestParam int recipeDetailId, HttpSession session) {
+    public String recipeListPOst (@RequestParam Long recipeDetailId, HttpSession session) {
         session.setAttribute("recipeDetailId", recipeDetailId);
-        return "recipe/details";
+        return "redirect:/recipes/details";
     }
 
 
@@ -41,8 +41,9 @@ public class RecipeController {
 
     @RequestMapping(value = "/recipes/details", method = RequestMethod.GET)
     public String recipeDetailsGet(HttpSession session, Model model) {
-
-        model.addAttribute("recipeDetails", recipeRepository.findById((Long) session.getAttribute("recipeDetailId")));
+        Long recipeDetailId = (Long) session.getAttribute("recipeDetailId");
+        model.addAttribute("recipeDetails", recipeRepository.findRecipeById(recipeDetailId));
+        session.removeAttribute("recipeDetailId");
         return "recipe/details";
     }
 

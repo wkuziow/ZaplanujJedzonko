@@ -14,7 +14,7 @@ VALUES
 ;
 
 INSERT INTO plan (name, description, created, user_id) VALUES
-('Plan Jarski', 'Opis planu 1', '2018-10-17', 1),
+('Plan Jarski', 'Pojęcie kuchnia wegetariańska określa pożywienie, które ani nie zawiera mięsa, ani nie zostało przygotowane na bazie pochodzącej z mięsa (np. na rosole drobiowym). Laktoowowegetarianie (najczęściej spotykany typ wegetarian w zachodnim świecie) spożywają nabiał, laktowegetarianie wykluczają jaja, ale nie inne produkty nabiałowe.', '2018-10-17', 1),
 ('Plan Mięsny', 'Opis planu 2', '2018-10-17', 1),
 ('Plan Śniadaniowy', 'Opis planu 3', '2018-10-17', 1),
 ('Plan Redukcja', 'Opis planu 4', '2018-10-17', 1),

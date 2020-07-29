@@ -7,9 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.dietPlanner.plan.PlanRepository;
 import pl.coderslab.dietPlanner.user.CurrentUser;
 import pl.coderslab.dietPlanner.utils.Utils;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -54,17 +57,14 @@ public class HomeController {
             model.addAttribute("newestPlanName",
                     planRepository.findAllByUserIdOrderByCreatedDesc(customUser.getUser().getId()).get(0).getName());
         }
-
-
-////        if (planDao.getNewestPlanByAdminId(user.getId()).isEmpty()){
-////            System.out.println("błąd");
-////        } else {
-////            request.setAttribute("display", "okToDisplay");
-////            request.setAttribute("newestPlan", planDao.getNewestPlanByAdminId(user.getId()));
-////            request.setAttribute("newestPlanName", planDao.getNewestPlanByAdminId(user.getId()).get(0).getPlanName());
-////        }
-
         return "home/dashboard";
     }
+
+    @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
+    public String dashboardPost (@RequestParam Long newestPlanId, HttpSession session) {
+        session.setAttribute("newestPlanId", newestPlanId);
+        return "redirect:/dashboard/planDetails";
+    }
+
 
 }
