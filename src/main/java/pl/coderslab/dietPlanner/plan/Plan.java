@@ -28,7 +28,7 @@ public class Plan {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<PlanItem> planItem;
 
     public Plan() {
