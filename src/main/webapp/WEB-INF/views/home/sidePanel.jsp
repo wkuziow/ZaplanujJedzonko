@@ -10,7 +10,7 @@
     <div class="row dashboard-nowrap">
         <ul class="nav flex-column long-bg">
             <li class="nav-item">
-                <a class="nav-link" href="/app/home">
+                <a class="nav-link" href="/dashboard">
                     <span>Pulpit</span>
                     <i class="fas fa-angle-right"></i>
                 </a>

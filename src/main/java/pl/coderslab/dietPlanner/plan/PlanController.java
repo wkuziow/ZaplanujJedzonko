@@ -44,7 +44,7 @@ public class PlanController {
         if (actionOnPlanDetails.equals("getDetails")) {
             result = "redirect:/dashboard/planDetails/recipeDetails";
         } else if (actionOnPlanDetails.equals("deletePlanItem")) {
-            planItemRepository.deleteById(idPlanDetailsItem);
+            planItemRepository.deletePlanItemQuery(idPlanDetailsItem);
             model.addAttribute("planDetailed", planService.findPlanSortDayNames(
                     (Long) session.getAttribute("newestPlanId")));
             result = "redirect:/dashboard/planDetails";
@@ -61,12 +61,8 @@ public class PlanController {
         return "recipe/details";
     }
 
-    @RequestMapping(value = "/dashboard/planDetails/deleteItem", method = RequestMethod.GET)
-    public String deletePlanItemGet(HttpSession session, Model model) {
-        Long idPlanDetailsItem = (Long) session.getAttribute("idPlanDetailsItem");
-        planItemRepository.deletePlanItemById(idPlanDetailsItem);
-        model.addAttribute("planDetailed", planService.findPlanSortDayNames(
-                (Long) session.getAttribute("newestPlanId")));
-        return "plan/details";
-    }
+    @RequestMapping(value = "/plan/add", method = RequestMethod.GET)
+    public String addPlanGet()
+
+
 }
