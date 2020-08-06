@@ -34,7 +34,7 @@ public class Plan {
     public Plan() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
