@@ -76,12 +76,10 @@ public class PlanController {
 
     @RequestMapping(value = "/plan/add", method = RequestMethod.POST)
     public String addPlanPost(@ModelAttribute @Validated Plan plan,
-                                       BindingResult bindingResult, @AuthenticationPrincipal CurrentUser customUser) {
+                              BindingResult bindingResult, @AuthenticationPrincipal CurrentUser customUser) {
         if (bindingResult.hasErrors()) {
             return "plan/add";
         }
-
-
         planService.savePlan(plan, customUser);
         return "redirect:/dashboard";
     }

@@ -32,7 +32,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<<form:form autocomplete="on" method="post"
+<form:form autocomplete="on" method="post"
             modelAttribute="plan" class="padding-small text-center">
     <div class="row border-bottom border-3 p-1 m-1">
         <div class="col noPadding">
@@ -70,6 +70,9 @@
 
     </div>
 </form:form>
+
+</div>
+</section>
 
 <%@include file="../../includes/footer.jsp" %>
 
