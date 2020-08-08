@@ -55,7 +55,7 @@ public class RecipeController {
 
     @RequestMapping(value = "/recipe/add", method = RequestMethod.GET)
     public String addRecipeGet(Model model) {
-        model.addAttribute("recpe", new Recipe());
+        model.addAttribute("recipe", new Recipe());
         return "recipe/add";
     }
 

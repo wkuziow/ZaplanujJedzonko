@@ -47,7 +47,7 @@
                     </a>
                 </div>
                 <div class="menu-item border-dashed">
-                    <a href="/app/plan/addrecipe">
+                    <a href="/plan/addrecipe">
                         <i class="far fa-plus-square icon-plus-square"></i>
                         <span class="title">dodaj przepis do planu</span>
                     </a>

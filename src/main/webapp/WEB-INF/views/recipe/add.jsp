@@ -33,7 +33,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <form:form autocomplete="on" method="post"
-           modelAttribute="recpe" class="padding-small text-center">
+           modelAttribute="recipe" class="padding-small text-center">
     <div class="mt-4 ml-4 mr-4">
         <div class="row border-bottom border-3">
             <div class="col"><h3 class="color-header text-uppercase">Nowy przepis</h3></div>

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.dietPlanner.recipe.RecipeRepository;
 import pl.coderslab.dietPlanner.user.CurrentUser;
 import pl.coderslab.dietPlanner.user.User;
+import pl.coderslab.dietPlanner.utils.DayName;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -82,5 +84,14 @@ public class PlanController {
         }
         planService.savePlan(plan, customUser);
         return "redirect:/dashboard";
+    }
+
+    @RequestMapping(value = "plan/addrecipe", method = RequestMethod.GET)
+    public String addRecipeToPlanGet(Model model){
+        model.addAttribute("listOfPlans", planRepository.findAll());
+        model.addAttribute("mealTypeList", Arrays.asList(MealType.values()));
+        model.addAttribute("dayNameList", Arrays.asList(DayName.values()));
+        model.addAttribute("planItem", new PlanItem());
+        return "plan/addRecipe";
     }
 }
