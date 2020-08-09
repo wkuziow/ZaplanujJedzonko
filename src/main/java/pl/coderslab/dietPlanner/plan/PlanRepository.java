@@ -11,4 +11,5 @@ public interface PlanRepository extends JpaRepository<Plan, Long> {
     int countAllByUserId(long userId);
     List<Plan> findAllByUserIdOrderByCreatedDesc(long userId);
     Plan findPlanById (long planId);
+
 }

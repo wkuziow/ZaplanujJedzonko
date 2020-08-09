@@ -15,6 +15,9 @@ public class PlanService {
     @Autowired
     private PlanRepository planRepository;
 
+    @Autowired
+    private PlanItemRepository planItemRepository;
+
     public Plan findPlanSortDayNames(Long planId) {
         Plan result = planRepository.findPlanById(planId);
         List<PlanItem> planItems = result.getPlanDetails().stream()
@@ -28,5 +31,13 @@ public class PlanService {
         plan.setCreated(LocalDate.now());
         plan.setUser(user.getUser());
         planRepository.save(plan);
+    }
+
+    public void addRecipeToPlan(Long plan, PlanItem planItem) {
+        PlanItem savedPlanItem = planItemRepository.save(planItem);
+        Plan planToModify = planRepository.findPlanById(plan);
+        List<PlanItem> planItems = planToModify.getPlanDetails();
+        planItems.add(savedPlanItem);
+        planToModify.setPlanDetails(planItems);
     }
 }

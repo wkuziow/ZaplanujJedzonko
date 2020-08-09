@@ -45,81 +45,83 @@
             </div>
 
             <div class="schedules-content">
-                <form>
-                    <div class="form-group row">
-                        <label for="planId" class="col-sm-2 label-size col-form-label">
-                            Wybierz plan
-                        </label>
-                        <div class="col-sm-3">
+
+                <div class="form-group row">
+                    <label for="planId" class="col-sm-2 label-size col-form-label">
+                        Wybierz plann
+                    </label>
+                    <div class="col-sm-3">
 
 
-                            <select class="form-control" id="planId">
-                                <c:forEach var="listOfPlans" items="${listOfPlans}">
-                                    <option name="plan" value="${listOfPlans.id}">${listOfPlans.name}</option>
-                                </c:forEach>
+                        <select class="form-control" id="planId" name="plan">
+                            <c:forEach var="listOfPlans" items="${listOfPlans}">
+                                <option  value="${listOfPlans.id}">${listOfPlans.name}</option>
+                            </c:forEach>
 
-                            </select>
-                        </div>
+                        </select>
                     </div>
-                    <div class="form-group row">
-                        <label for="mealNameId" class="col-sm-2 label-size col-form-label">
-                            Nazwa posiłku
-                        </label>
-                        <div class="col-sm-10">
-                            <form:input type="text" path="mealName" id="mealNameId" name="mealName"
-                                        placeholder="Nazwa pposiłku"
-                                         class="form-control"/>
-                            <form:errors path="mealName" cssClass="error"/>
+                </div>
+                <div class="form-group row">
+                    <label for="mealNameId" class="col-sm-2 label-size col-form-label">
+                        Nazwa posiłku
+                    </label>
+                    <div class="col-sm-10">
+                        <form:input type="text" path="mealName" id="mealNameId" name="mealName"
+                                    placeholder="Nazwa posiłku"
+                                    class="form-control"/>
+                        <form:errors path="mealName" cssClass="error"/>
 
-                        </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="mealTypeId" class="col-sm-2 label-size col-form-label">
-                            Rodzaj posiłku
-                        </label>
-                        <div class="col-sm-2">
+                </div>
+                <div class="form-group row">
+                    <label for="mealTypeId" class="col-sm-2 label-size col-form-label">
+                        Rodzaj posiłku
+                    </label>
+                    <div class="col-sm-2">
 
-                            <form:select path="mealType"
-                                         items="${mealTypeList}"
-                                         itemLabel="${mealTypeList}"
-                                         id="mealTypeId"
-                                         class="custom-select">
+                        <form:select path="mealType"
+                                     id="mealTypeId"
+                                     class="custom-select">
 
+                            <form:options items="${mealTypeList}"/>
 
-                            </form:select>
-                            <form:errors path="mealType" cssClass="error"/>
+                        </form:select>
+                        <form:errors path="mealType" cssClass="error"/>
 
-                        </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="recipie" class="col-sm-2 label-size col-form-label">
-                            Przepis
-                        </label>
-                        <div class="col-sm-4">
-                            <select class="form-control" id="recipie">
-                                <option>Zapiekanka z ziemniakami i brukselką</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label for="recipeId" class="col-sm-2 label-size col-form-label">
+                        Przepis
+                    </label>
+                    <div class="col-sm-4">
+
+                        <form:select path="recipeName"
+                                     id="recipeId"
+                                     class="custom-select">
+                            <form:options itemLabel="name" itemValue="id" items="${listOfRecipes}"/>
+                        </form:select>
+                        <form:errors path="recipeName" cssClass="error"/>
+
+
                     </div>
-                    <div class="form-group row">
-                        <label for="day" class="col-sm-2 label-size col-form-label">
-                            Dzień
-                        </label>
-                        <div class="col-sm-2">
-                            <select class="form-control" id="day">
-                                <option>poniedziałek</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label for="dayNameId" class="col-sm-2 label-size col-form-label">
+                        Dzień
+                    </label>
+                    <div class="col-sm-2">
+                        <form:select path="dayName"
+                                     id="dayNameId"
+                                     class="custom-select">
+
+                            <form:options items="${dayNameList}"/>
+
+                        </form:select>
+                        <form:errors path="dayName" cssClass="error"/>
                     </div>
-                </form>
+                </div>
+
             </div>
         </div>
     </form:form>

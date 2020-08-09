@@ -89,9 +89,20 @@ public class PlanController {
     @RequestMapping(value = "plan/addrecipe", method = RequestMethod.GET)
     public String addRecipeToPlanGet(Model model){
         model.addAttribute("listOfPlans", planRepository.findAll());
+        model.addAttribute("listOfRecipes", recipeRepository.findAll());
         model.addAttribute("mealTypeList", Arrays.asList(MealType.values()));
         model.addAttribute("dayNameList", Arrays.asList(DayName.values()));
         model.addAttribute("planItem", new PlanItem());
         return "plan/addRecipe";
+    }
+
+    @RequestMapping(value = "plan/addrecipe", method = RequestMethod.POST)
+    public String addRecipetoPlanPost(@RequestParam Long plan, @ModelAttribute @Validated PlanItem planItem,
+                                      BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "plan/addrecipe";
+        }
+        planService.addRecipeToPlan(plan, planItem);
+        return "redirect:/dashboard";
     }
 }

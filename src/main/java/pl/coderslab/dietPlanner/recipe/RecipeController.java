@@ -34,7 +34,7 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/recipes", method = RequestMethod.POST)
-    public String recipeListPOst (@RequestParam Long recipeDetailId, HttpSession session) {
+    public String recipeListPost (@RequestParam Long recipeDetailId, HttpSession session) {
         session.setAttribute("recipeDetailId", recipeDetailId);
         return "redirect:/recipes/details";
     }
@@ -67,6 +67,12 @@ public class RecipeController {
         }
         recipeService.saveRecipe(recipe, customUser);
         return "redirect:/dashboard";
+    }
+
+    @RequestMapping(value = "recipe/list", method = RequestMethod.GET)
+    public String recipeListLoggedGet(Model model) {
+        model.addAttribute("recipeList", recipeRepository.findAll());
+        return "recipe/list";
     }
 
 }
