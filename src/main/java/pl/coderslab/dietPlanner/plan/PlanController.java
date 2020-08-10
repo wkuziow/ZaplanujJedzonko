@@ -105,4 +105,10 @@ public class PlanController {
         planService.addRecipeToPlan(plan, planItem);
         return "redirect:/dashboard";
     }
+
+    @RequestMapping(value = "plan/list", method = RequestMethod.GET)
+    public String planListGet(Model model) {
+        model.addAttribute("planList", planRepository.findAll());
+        return "plan/list";
+    }
 }
